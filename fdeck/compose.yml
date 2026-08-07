@@ -1,0 +1,19 @@
+version: "3.9" 
+services:
+  postgres: 
+    image: postgres:16-alpine
+    container_name: flightdeck_pg
+    environment: 
+      POSTGRES_DB: flightdeck
+      POSTGRES_USER: fd
+      POSTGRES_PASSWORD: flight
+    ports: 
+      - "5432:5432"
+    volumes: 
+      - "flightdeck-postgres-data:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flight"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      

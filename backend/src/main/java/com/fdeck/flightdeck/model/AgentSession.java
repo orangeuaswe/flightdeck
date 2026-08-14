@@ -43,7 +43,7 @@ public class AgentSession
     //cost estimate in USD
     private Double estimatedCostUSD = 0.0;
     private Integer toolCallCount = 0;
-    private Integer failedCallCount = 0;
+    private Integer failedToolCallCount = 0;
     @Version
     private Long version;
 

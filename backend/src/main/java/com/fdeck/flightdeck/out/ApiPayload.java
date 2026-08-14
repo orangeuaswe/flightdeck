@@ -1,4 +1,4 @@
-package com.fdeck.flightdeck.payload;
+package com.fdeck.flightdeck.out;
 
 import com.fdeck.flightdeck.model.AgentSession;
 import com.fdeck.flightdeck.model.ExecutionEvent;

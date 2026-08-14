@@ -1,13 +1,11 @@
 package com.fdeck.flightdeck.repo;
 
-import com.fdeck.fligtdeck.model.ExecutionEvent;
-
-import org.springframework.data.jpa.JpaRepository;
-
 import java.util.List; 
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.UUID;
+
+import com.fdeck.flightdeck.model.ExecutionEvent;
 
 public interface  ExecutionEventRepository extends JpaRepository<ExecutionEvent, UUID>
 {

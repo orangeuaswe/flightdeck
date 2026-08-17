@@ -9,20 +9,7 @@ import java.util.UUID;
 
 public class ApiPayload 
 {
-    public record SessionSummary(
-        UUID id, 
-        String provider,
-        String status,
-        String repoName,
-        String branch,
-        String currentTask, 
-        String machineLabel,
-        Instant startedAt,
-        Instant endedAt,
-        Double estimatedCostUsd,
-        Integer toolCallCount,
-        Integer failedToolCallCount
-    )
+    public record SessionSummary(UUID id,  String provider, String status, String repoName, String branch, String currentTask,  String machineLabel, Instant startedAt, Instant endedAt, Double estimatedCostUsd, Integer toolCallCount, Integer failedToolCallCount)
     {
         public static SessionSummary from(AgentSession session)
         {
@@ -43,21 +30,13 @@ public class ApiPayload
         }
     }
 
-    public record EventEntry(
-        UUID id, 
-        String eventType,
-        String toolName,
-        String summary,
-        Boolean success, 
-        String terminalOutput, 
-        Instant createdAt
-    )
+    public record EventEntry(UUID id, String eventType, String toolName, String summary, Boolean success,  String terminalOutput,  Instant createdAt)
     {
         public static EventEntry from(ExecutionEvent event)
         {
             return new EventEntry(
                 event.getId(),
-                event.getEventType().name(),
+                event.getEvent().name(),
                 event.getToolName(),
                 event.getSummary(),
                 event.getSuccess(),
@@ -65,5 +44,24 @@ public class ApiPayload
                 event.getCreatedAt()
             );
         }
+    }
+
+    public record CommitEntry(UUID id, String commitHash, String message, String branch, Instant createdAt)
+    {
+        public static CommitEntry from (GitCommitRecord commit)
+        {
+            return new CommitEntry(
+                commit.getId(), 
+                commit.getCommitHash(),
+                commit.getMessage(), 
+                commit.getBranch(), 
+                commit.getCommitedAt()
+            );
+        }
+    }
+
+    public record SessionDetail(SessionSummary session, List<EventEntry> timeline, List<CommitEntry> commits)
+    {
+
     }
 }

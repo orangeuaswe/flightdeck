@@ -1,4 +1,4 @@
-package com.fdeck.flightdeck.payload;
+package com.fdeck.flightdeck.out;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

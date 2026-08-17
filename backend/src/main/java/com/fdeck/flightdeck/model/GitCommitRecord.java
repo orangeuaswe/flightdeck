@@ -3,9 +3,8 @@ package com.fdeck.flightdeck.model;
 import jakarta.annotation.Generated;
 import jakarta.persistence.*; 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
-import lombok.Setter; 
-import lombok.NoArgsContructor; 
 
 import java.time.Instant; 
 import java.util.UUID; 
